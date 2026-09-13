@@ -1,6 +1,43 @@
-﻿__pycache__/
-*.pyc
-*.db
+# Python
+__pycache__/
+*.py[codz]
+*$py.class
+
+# Virtual environments
 .venv/
 venv/
+env/
+ENV/
+
+# Environment variables
 .env
+.envrc
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary files
+*.log
+tempCodeRunnerFile.py
