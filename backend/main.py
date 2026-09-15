@@ -6,6 +6,10 @@ backend_dir = os.path.dirname(os.path.abspath(__file__))
 if backend_dir not in sys.path:
     sys.path.insert(0, backend_dir)
 
+# Load environment variables from .env file (if present) before any other imports
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=os.path.join(backend_dir, ".env"))
+
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session

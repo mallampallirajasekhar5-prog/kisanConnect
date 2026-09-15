@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>KisanConnect – Direct Farmer-to-Buyer Marketplace</title>
+    <meta name="description" content="KisanConnect connects Indian farmers directly with buyers. Fresh produce, fair prices, AI market intelligence, and fast delivery from farm to your door.">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -152,6 +153,42 @@
             color: #86efac;
         }
 
+        .nav-right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Language Selector */
+        .lang-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background: rgba(34,197,94,.08);
+            border: 1px solid rgba(134,239,172,.2);
+            color: #bbf7d0;
+            padding: 8px 28px 8px 12px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+            transition: .3s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2386efac'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 6px center;
+            background-size: 18px;
+        }
+
+        .lang-select:hover, .lang-select:focus {
+            border-color: rgba(134,239,172,.5);
+            background-color: rgba(34,197,94,.15);
+        }
+
+        .lang-select option {
+            background: #081a10;
+            color: #f4fff7;
+        }
+
         .login-btn {
             border: 1px solid rgba(134,239,172,.25);
             background: rgba(34,197,94,.1);
@@ -160,6 +197,8 @@
             border-radius: 12px;
             cursor: pointer;
             transition: .3s;
+            font-size: 14px;
+            white-space: nowrap;
         }
 
         .login-btn:hover {
@@ -216,7 +255,7 @@
 
         .hero-buttons {
             display: flex;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -230,6 +269,9 @@
             background: linear-gradient(135deg,#22c55e,#15803d);
             box-shadow: 0 15px 35px rgba(34,197,94,.18);
             transition: .35s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .primary-btn:hover {
@@ -245,10 +287,32 @@
             color: white;
             cursor: pointer;
             transition: .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .secondary-btn:hover {
             background: rgba(255,255,255,.08);
+            transform: translateY(-4px);
+        }
+
+        .gold-btn {
+            padding: 14px 22px;
+            border-radius: 13px;
+            border: 1px solid rgba(250,204,21,.3);
+            background: rgba(250,204,21,.08);
+            color: #fde68a;
+            cursor: pointer;
+            font-weight: 700;
+            transition: .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gold-btn:hover {
+            background: rgba(250,204,21,.15);
             transform: translateY(-4px);
         }
 
@@ -664,7 +728,7 @@
         }
 
         .modal-box {
-            width: min(450px, 90%);
+            width: min(480px, 90%);
             padding: 35px;
             border-radius: 28px;
             border: 1px solid var(--border);
@@ -707,20 +771,114 @@
             color: white;
             border-radius: 12px;
             outline: none;
+            font-family: inherit;
+            font-size: 15px;
         }
+
+        .input::placeholder { color: #6b8577; }
 
         .input:focus {
             border-color: #22c55e;
+            background: rgba(34,197,94,.06);
         }
 
         .modal-box .primary-btn {
             width: 100%;
             margin-top: 10px;
+            justify-content: center;
         }
 
-        #otpBox {
+        /* Role Tabs */
+        .role-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .role-tab {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.04);
+            color: #9db0a4;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: .25s;
+            text-align: center;
+        }
+
+        .role-tab.active {
+            background: rgba(34,197,94,.15);
+            border-color: rgba(34,197,94,.4);
+            color: #86efac;
+        }
+
+        /* OTP Status info */
+        .otp-info {
+            font-size: 12px;
+            color: #9db0a4;
+            margin-top: 6px;
+            min-height: 18px;
+        }
+
+        .otp-info.warn { color: #fbbf24; }
+        .otp-info.err  { color: #f87171; }
+
+        /* Resend row */
+        .resend-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .resend-btn {
+            background: none;
+            border: none;
+            color: #86efac;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 0;
+        }
+
+        .resend-btn:disabled {
+            color: #9db0a4;
+            cursor: not-allowed;
+        }
+
+        /* Dev debug OTP banner */
+        .debug-banner {
+            background: rgba(250,204,21,.1);
+            border: 1px solid rgba(250,204,21,.3);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: #fde68a;
+            margin: 8px 0;
             display: none;
         }
+
+        .debug-banner.show { display: block; }
+
+        /* Attempt dots */
+        .attempt-dots {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .attempt-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(134,239,172,.35);
+            transition: .3s;
+        }
+
+        .attempt-dot.used { background: #f87171; }
 
         .toast {
             position: fixed;
@@ -735,11 +893,21 @@
             opacity: 0;
             transition: .4s;
             z-index: 3000;
+            max-width: 340px;
         }
 
         .toast.show {
             transform: translateY(0);
             opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-soft);
+            font-size: 14px;
+            text-align: center;
         }
 
         @media(max-width: 950px) {
@@ -755,10 +923,11 @@
             .hero { padding-top: 45px; }
             .role-grid { grid-template-columns: 1fr; }
             .product-grid { grid-template-columns: 1fr; }
+            .hero-buttons { gap: 8px; }
+            .primary-btn, .secondary-btn, .gold-btn { padding: 12px 16px; font-size: 13px; }
         }
     </style>
 </head>
-
 <body>
 
 <div class="orb one"></div>
@@ -774,17 +943,28 @@
         </a>
 
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#roles">How It Works</a></li>
-            <li><a href="#market">Market</a></li>
+            <li><a href="#home" data-i18n="nav_home">Home</a></li>
+            <li><a href="#roles" data-i18n="nav_how">How It Works</a></li>
+            <li><a href="#market" data-i18n="nav_market">Market</a></li>
         </ul>
 
-        <div style="display:flex; gap:10px; align-items:center;">
-            <button class="login-btn" onclick="openCartModal()">
-                <i class="fa-solid fa-cart-shopping"></i> Cart (<span id="navCartCount">0</span>)
+        <div class="nav-right">
+            <!-- Language Selector -->
+            <select id="langSelect" class="lang-select" onchange="setLanguage(this.value)" title="Select Language">
+                <option value="en">🌐 English</option>
+                <option value="te">🌐 తెలుగు</option>
+                <option value="hi">🌐 हिंदी</option>
+            </select>
+
+            <button class="login-btn" onclick="openCartModal()" id="navCartBtn">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span data-i18n="nav_cart">Cart</span>
+                (<span id="navCartCount">0</span>)
             </button>
+
             <button id="navLoginBtn" class="login-btn" onclick="openLogin()">
-                <i class="fa-solid fa-user"></i> Login
+                <i class="fa-solid fa-user"></i>
+                <span data-i18n="nav_login">Login</span>
             </button>
         </div>
     </div>
@@ -804,21 +984,42 @@
             Directly to You.
         </h1>
 
-        <p>
+        <p data-i18n="hero_desc">
             A smarter marketplace connecting farmers directly with buyers.
             Discover fresh products, fair prices, transparent transactions,
             intelligent AI demand insights and optimized delivery routes.
         </p>
 
+        <!-- HERO BUTTONS — all 5 functional -->
         <div class="hero-buttons">
-            <button class="primary-btn" onclick="chooseRole('buyer')">
+            <!-- 1. Shop Now / Explore Products → Buyer dashboard -->
+            <button class="primary-btn" id="heroShopBtn" onclick="goToBuyerDashboard()">
                 <i class="fa-solid fa-cart-shopping"></i>
-                Start Buying
+                <span data-i18n="btn_shop_now">Shop Now</span>
             </button>
 
-            <button class="secondary-btn" onclick="chooseRole('farmer')">
+            <!-- 2. Sell Products → Farmer dashboard -->
+            <button class="secondary-btn" id="heroSellBtn" onclick="goToFarmerDashboard()">
                 <i class="fa-solid fa-tractor"></i>
-                Sell Your Products
+                <span data-i18n="btn_sell">Sell Products</span>
+            </button>
+
+            <!-- 3. Get Started → OTP Login -->
+            <button class="gold-btn" id="heroGetStartedBtn" onclick="openLogin()">
+                <i class="fa-solid fa-rocket"></i>
+                <span data-i18n="btn_get_started">Get Started</span>
+            </button>
+
+            <!-- 4. AI Assistant → AI section -->
+            <button class="secondary-btn" id="heroAIBtn" onclick="scrollToAI()">
+                <i class="fa-solid fa-robot"></i>
+                <span data-i18n="btn_ai">AI Assistant</span>
+            </button>
+
+            <!-- 5. Market Prices → Market Prices section -->
+            <button class="secondary-btn" id="heroMarketBtn" onclick="scrollToMarket()">
+                <i class="fa-solid fa-chart-line"></i>
+                <span data-i18n="btn_market">Market Prices</span>
             </button>
         </div>
     </div>
@@ -842,8 +1043,8 @@
 <section class="quote">
     <i class="fa-solid fa-quote-left"></i>
     <h2>
-        “When farmers earn better,
-        <span>communities grow stronger.</span>”
+        "When farmers earn better,
+        <span>communities grow stronger.</span>"
     </h2>
     <p>
         Building a transparent connection between the people who grow our food and the people who consume it.
@@ -851,27 +1052,27 @@
 </section>
 
 <!-- ROLE SELECTION -->
-<section id="roles" class="container">
+<section id="roles" class="container" style="padding-top:80px; padding-bottom:60px;">
     <div class="section-title">
-        <span>Choose your journey</span>
-        <h2>Who are you?</h2>
+        <span data-i18n="roles_choose">Choose your journey</span>
+        <h2 data-i18n="roles_who">Who are you?</h2>
     </div>
 
     <div class="role-grid">
         <!-- FARMER -->
-        <div class="role-card" onclick="chooseRole('farmer')">
+        <div class="role-card" onclick="goToFarmerDashboard()">
             <div class="role-icon">👨‍🌾</div>
-            <h3>I'm a Farmer</h3>
-            <p>Manage products, monitor sales, view AI price suggestions, understand demand forecasts and optimize delivery routes.</p>
-            <button>Farmer Dashboard →</button>
+            <h3 data-i18n="role_farmer">I'm a Farmer</h3>
+            <p data-i18n="role_farmer_desc">Manage products, monitor sales, view AI price suggestions, understand demand forecasts and optimize delivery routes.</p>
+            <button data-i18n="btn_farmer_dash">Farmer Dashboard →</button>
         </div>
 
         <!-- BUYER -->
-        <div class="role-card" onclick="chooseRole('buyer')">
+        <div class="role-card" onclick="goToBuyerDashboard()">
             <div class="role-icon">🛒</div>
-            <h3>I'm a Buyer</h3>
-            <p>Find fresh farm products, compare fair prices, add products to cart, place orders and track live delivery status.</p>
-            <button>Explore Products →</button>
+            <h3 data-i18n="role_buyer">I'm a Buyer</h3>
+            <p data-i18n="role_buyer_desc">Find fresh farm products, compare fair prices, add products to cart, place orders and track live delivery status.</p>
+            <button data-i18n="btn_explore">Explore Products →</button>
         </div>
     </div>
 </section>
@@ -885,44 +1086,59 @@
     <div id="farmerDashboard" class="dashboard">
         <div class="dashboard-header">
             <div>
-                <span class="role-label">👨‍🌾 Farmer Portal</span>
-                <h2>Farmer Dashboard</h2>
-                <p style="color:#9db0a4;margin-top:7px;">Welcome back! Here is your real-time farm business overview.</p>
+                <span class="role-label">👨‍🌾 <span data-i18n="label_farmer_portal">Farmer Portal</span></span>
+                <h2 data-i18n="farmer_dash_title">Farmer Dashboard</h2>
+                <p style="color:#9db0a4;margin-top:7px;" data-i18n="farmer_dash_sub">Welcome back! Here is your real-time farm business overview.</p>
             </div>
-            <button class="secondary-btn" onclick="hideDashboards()">← Home</button>
+            <button class="secondary-btn" onclick="hideDashboards()">← <span data-i18n="btn_home">Home</span></button>
         </div>
 
         <!-- FARMER STATS -->
         <div class="stats">
             <div class="stat">
                 <div class="stat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
-                <small>Total Sales</small>
+                <small data-i18n="stat_sales">Total Sales</small>
                 <strong id="farmerSalesStat">₹48,500</strong>
             </div>
             <div class="stat">
                 <div class="stat-icon"><i class="fa-solid fa-box"></i></div>
-                <small>Products Listed</small>
+                <small data-i18n="stat_products">Products Listed</small>
                 <strong id="farmerProductsCountStat">0</strong>
             </div>
             <div class="stat">
                 <div class="stat-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                <small>Total Orders</small>
+                <small data-i18n="stat_orders">Total Orders</small>
                 <strong id="farmerOrdersCountStat">0</strong>
             </div>
             <div class="stat">
                 <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
-                <small>Buyers</small>
+                <small data-i18n="stat_buyers">Buyers</small>
                 <strong>84</strong>
             </div>
         </div>
 
         <!-- FARMER AI PANELS -->
+        <!-- AI SECTION HEADER -->
+        <div style="margin-bottom:20px; padding:22px 28px; border-radius:22px; background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(250,204,21,.06)); border:1px solid rgba(34,197,94,.2); display:flex; align-items:center; gap:18px;">
+            <div style="font-size:40px; flex-shrink:0;">🤖</div>
+            <div>
+                <div style="color:#86efac; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase;">Kisan AI Assistant</div>
+                <h3 style="font-size:22px; margin:4px 0;">AI Intelligence Layer</h3>
+                <p style="color:#9db0a4; font-size:13px; margin:0;">Real-time price suggestions, demand forecasting and route optimization powered by AI.</p>
+            </div>
+        </div>
         <div class="content-grid">
             <!-- AI PRICE SUGGESTION PANEL -->
             <div class="panel" id="market">
                 <div class="panel-header">
-                    <h3>🤖 AI Price Suggestion</h3>
-                    <span>Real-Time Market</span>
+                    <h3>💰 <span data-i18n="panel_ai_price">AI Price Suggestion</span></h3>
+                    <span data-i18n="panel_realtime">Real-Time Market</span>
+                </div>
+                <!-- AI visual card -->
+                <div style="margin-bottom:14px; border-radius:14px; overflow:hidden; height:120px; position:relative;">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=75" alt="Agricultural market prices" style="width:100%; height:100%; object-fit:cover;" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=75'">
+                    <div style="position:absolute; inset:0; background:linear-gradient(to right,rgba(2,12,7,.85),transparent);"></div>
+                    <div style="position:absolute; bottom:10px; left:14px; font-size:13px; color:#fde68a; font-weight:700;">📈 Smart Price Engine</div>
                 </div>
                 <div id="aiPriceSuggestionBox" style="padding:16px; border-radius:16px; background:rgba(250,204,21,.08); border:1px solid rgba(250,204,21,.2); color:#fde68a; font-size:14px; line-height:1.6;">
                     Loading AI Price Suggestions...
@@ -932,8 +1148,14 @@
             <!-- AI DEMAND FORECAST PANEL -->
             <div class="panel">
                 <div class="panel-header">
-                    <h3>📊 AI Demand Forecasting</h3>
-                    <span>30-Day Trend</span>
+                    <h3>📊 <span data-i18n="panel_ai_demand">AI Demand Forecasting</span></h3>
+                    <span data-i18n="panel_30day">30-Day Trend</span>
+                </div>
+                <!-- AI demand visual card -->
+                <div style="margin-bottom:14px; border-radius:14px; overflow:hidden; height:120px; position:relative;">
+                    <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=75" alt="Agricultural demand analytics" style="width:100%; height:100%; object-fit:cover;" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=75'">
+                    <div style="position:absolute; inset:0; background:linear-gradient(to right,rgba(2,12,7,.85),transparent);"></div>
+                    <div style="position:absolute; bottom:10px; left:14px; font-size:13px; color:#86efac; font-weight:700;">🌾 Harvest Intelligence</div>
                 </div>
                 <div id="aiDemandForecastBox" style="padding:16px; border-radius:16px; background:rgba(34,197,94,.08); border:1px solid rgba(34,197,94,.2); color:#d1fae5; font-size:14px; line-height:1.6;">
                     Loading AI Demand Forecast...
@@ -944,8 +1166,8 @@
         <!-- FARMER PRODUCTS -->
         <div class="panel" style="margin-bottom:25px;">
             <div class="panel-header">
-                <h3>🌱 My Listed Products</h3>
-                <span onclick="openAddProductModal()" style="font-weight:bold; font-size:15px;">+ Add Product</span>
+                <h3>🌱 <span data-i18n="panel_my_products">My Listed Products</span></h3>
+                <span onclick="openAddProductModal()" style="font-weight:bold; font-size:15px;" data-i18n="btn_add_product">+ Add Product</span>
             </div>
             <div class="product-grid" id="farmerProductsGrid">
                 <!-- Dynamically loaded from GET /products/farmer/{farmer_id} -->
@@ -955,8 +1177,8 @@
         <!-- FARMER INCOMING ORDERS -->
         <div class="panel">
             <div class="panel-header">
-                <h3>📦 Incoming Buyer Orders</h3>
-                <span>Live Orders</span>
+                <h3>📦 <span data-i18n="panel_incoming_orders">Incoming Buyer Orders</span></h3>
+                <span data-i18n="label_live">Live Orders</span>
             </div>
             <div id="farmerOrdersList">
                 <!-- Dynamically loaded from GET /orders/farmer/{farmer_id} -->
@@ -966,8 +1188,8 @@
         <!-- FARMER DELIVERY & AI ROUTE -->
         <div class="panel" style="margin-top:25px;">
             <div class="panel-header">
-                <h3>🗺️ AI Delivery Route Optimization</h3>
-                <span>Smart Dispatch</span>
+                <h3>🗺️ <span data-i18n="panel_delivery">AI Delivery Route Optimization</span></h3>
+                <span data-i18n="label_dispatch">Smart Dispatch</span>
             </div>
             <div id="farmerDeliveryCard">
                 <!-- Dynamically loaded from GET /delivery/farmer/{farmer_id} -->
@@ -981,33 +1203,33 @@
     <div id="buyerDashboard" class="dashboard">
         <div class="dashboard-header">
             <div>
-                <span class="role-label">🛒 Buyer Portal</span>
-                <h2>Buyer Marketplace</h2>
-                <p style="color:#9db0a4;margin-top:7px;">Fresh agricultural produce directly from local farmers.</p>
+                <span class="role-label">🛒 <span data-i18n="label_buyer_portal">Buyer Portal</span></span>
+                <h2 data-i18n="buyer_dash_title">Buyer Marketplace</h2>
+                <p style="color:#9db0a4;margin-top:7px;" data-i18n="buyer_dash_sub">Fresh agricultural produce directly from local farmers.</p>
             </div>
-            <button class="secondary-btn" onclick="hideDashboards()">← Home</button>
+            <button class="secondary-btn" onclick="hideDashboards()">← <span data-i18n="btn_home">Home</span></button>
         </div>
 
         <!-- BUYER STATS -->
         <div class="stats">
             <div class="stat">
                 <div class="stat-icon">🛍️</div>
-                <small>Total Orders</small>
+                <small data-i18n="stat_orders">Total Orders</small>
                 <strong id="buyerOrdersCountStat">0</strong>
             </div>
             <div class="stat">
                 <div class="stat-icon">₹</div>
-                <small>Total Spent</small>
+                <small data-i18n="stat_spent">Total Spent</small>
                 <strong id="buyerTotalSpentStat">₹0</strong>
             </div>
             <div class="stat">
                 <div class="stat-icon">🛒</div>
-                <small>Cart Items</small>
+                <small data-i18n="stat_cart">Cart Items</small>
                 <strong id="cartCount">0</strong>
             </div>
             <div class="stat">
                 <div class="stat-icon">🚚</div>
-                <small>Active Deliveries</small>
+                <small data-i18n="stat_deliveries">Active Deliveries</small>
                 <strong id="buyerDeliveriesStat">0</strong>
             </div>
         </div>
@@ -1015,8 +1237,8 @@
         <!-- BUYER PRODUCTS GRID -->
         <div class="panel">
             <div class="panel-header">
-                <h3>🥬 Fresh Produce From Farmers</h3>
-                <span onclick="openCartModal()">View Cart 🛒</span>
+                <h3>🥬 <span data-i18n="panel_fresh_produce">Fresh Produce From Farmers</span></h3>
+                <span onclick="openCartModal()" data-i18n="btn_view_cart">View Cart 🛒</span>
             </div>
             <div class="product-grid" id="buyerProductsGrid">
                 <!-- Dynamically loaded from GET /products -->
@@ -1027,8 +1249,8 @@
         <div class="content-grid" style="margin-top:25px;">
             <div class="panel">
                 <div class="panel-header">
-                    <h3>📦 My Orders</h3>
-                    <span>Order History</span>
+                    <h3>📦 <span data-i18n="panel_my_orders">My Orders</span></h3>
+                    <span data-i18n="label_order_history">Order History</span>
                 </div>
                 <div id="buyerOrdersList">
                     <!-- Dynamically loaded from GET /orders/buyer/{buyer_id} -->
@@ -1037,8 +1259,8 @@
 
             <div class="panel">
                 <div class="panel-header">
-                    <h3>🚚 Live Delivery Tracking</h3>
-                    <span>GPS Tracking</span>
+                    <h3>🚚 <span data-i18n="panel_delivery_tracking">Live Delivery Tracking</span></h3>
+                    <span data-i18n="label_gps">GPS Tracking</span>
                 </div>
                 <div id="buyerDeliveryCard">
                     <!-- Dynamically loaded from GET /delivery/buyer/{buyer_id} -->
@@ -1051,24 +1273,66 @@
 </main>
 
 <!-- =========================
-     LOGIN MODAL
+     LOGIN MODAL — improved OTP
 ========================= -->
 <div id="loginModal" class="modal">
     <div class="modal-box">
-        <button class="close" onclick="closeLogin()">×</button>
+        <button class="close" onclick="closeLogin()" id="loginCloseBtn">×</button>
         <span class="role-label" id="modalRoleLabel">Secure Portal Access</span>
-        <h2>Welcome Back 👋</h2>
-        <p>Login using your mobile number and Demo OTP (123456).</p>
+        <h2 data-i18n="login_title">Welcome 👋</h2>
+        <p data-i18n="login_sub">Login with your mobile number. OTP will be sent via SMS.</p>
 
-        <div id="mobileBox">
-            <input id="mobile" class="input" type="tel" maxlength="10" placeholder="Enter 10-digit mobile number" value="9876543210">
-            <input id="nameInput" class="input" placeholder="Your Full Name (e.g. Ramesh Farmer)">
-            <button class="primary-btn" onclick="sendOTP()">Send OTP</button>
+        <!-- Role Tabs -->
+        <div class="role-tabs" id="roleTabs">
+            <button class="role-tab active" id="tabBuyer" onclick="selectLoginRole('buyer')" data-i18n="tab_buyer">🛒 Buyer</button>
+            <button class="role-tab" id="tabFarmer" onclick="selectLoginRole('farmer')" data-i18n="tab_farmer">👨‍🌾 Farmer</button>
         </div>
 
-        <div id="otpBox">
-            <input id="otp" class="input" maxlength="6" placeholder="Enter OTP (Use: 123456)" value="123456">
-            <button class="primary-btn" onclick="verifyOTP()">Verify OTP & Login</button>
+        <!-- Step 1: Mobile + Name -->
+        <div id="mobileBox">
+            <input id="mobile" class="input" type="tel" maxlength="10" placeholder="Enter 10-digit mobile number" autocomplete="tel">
+            <input id="nameInput" class="input" placeholder="Your Full Name (e.g. Ramesh Kumar)" autocomplete="name">
+
+            <!-- Dev debug OTP banner -->
+            <div class="debug-banner" id="debugBanner"></div>
+
+            <button class="primary-btn" id="sendOtpBtn" onclick="sendOTP()">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span data-i18n="btn_send_otp">Send OTP</span>
+            </button>
+        </div>
+
+        <!-- Step 2: OTP Entry -->
+        <div id="otpBox" style="display:none;">
+            <p style="color:#86efac; font-size:13px; margin-bottom:10px;" id="otpSentNotice"></p>
+
+            <input id="otp" class="input" maxlength="6" placeholder="Enter 6-digit OTP" autocomplete="one-time-code" inputmode="numeric">
+
+            <!-- Dev debug OTP banner (also shown here) -->
+            <div class="debug-banner" id="debugBanner2"></div>
+
+            <!-- Attempt dots -->
+            <div style="display:flex; justify-content:space-between; align-items:center; margin: 8px 0;">
+                <div class="attempt-dots" id="attemptDots">
+                    <span style="font-size:12px; color:#9db0a4;">Attempts:</span>
+                    <span class="attempt-dot" id="dot1"></span>
+                    <span class="attempt-dot" id="dot2"></span>
+                    <span class="attempt-dot" id="dot3"></span>
+                </div>
+                <div class="otp-info" id="otpInfo"></div>
+            </div>
+
+            <button class="primary-btn" id="verifyOtpBtn" onclick="verifyOTP()">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span data-i18n="btn_verify_otp">Verify OTP & Login</span>
+            </button>
+
+            <div class="resend-row">
+                <button class="resend-btn" id="resendBtn" onclick="resendOTP()" disabled>
+                    <span id="resendBtnText">Resend OTP in <span id="resendCountdown">60</span>s</span>
+                </button>
+                <button style="background:none;border:none;color:#9db0a4;font-size:12px;cursor:pointer;" onclick="resetLoginFlow()">← Change Number</button>
+            </div>
         </div>
     </div>
 </div>
@@ -1079,9 +1343,9 @@
 <div id="addProductModal" class="modal">
     <div class="modal-box">
         <button class="close" onclick="closeAddProductModal()">×</button>
-        <span class="role-label">👨‍🌾 Farmer Inventory</span>
-        <h2>Add New Product</h2>
-        <p>List your fresh harvest for buyers across the network.</p>
+        <span class="role-label">👨‍🌾 <span data-i18n="label_farmer_inventory">Farmer Inventory</span></span>
+        <h2 data-i18n="add_product_title">Add New Product</h2>
+        <p data-i18n="add_product_sub">List your fresh harvest for buyers across the network.</p>
 
         <input id="prodName" class="input" placeholder="Crop / Product Name (e.g. Tomato)">
         <select id="prodCategory" class="input" style="background:#0c1f15;">
@@ -1101,7 +1365,7 @@
             <input id="prodLocation" class="input" placeholder="Location (e.g. Amalapuram)">
         </div>
 
-        <button class="primary-btn" onclick="submitAddProduct()">Submit Product</button>
+        <button class="primary-btn" onclick="submitAddProduct()" style="justify-content:center; width:100%; margin-top:10px;" data-i18n="btn_submit_product">Submit Product</button>
     </div>
 </div>
 
@@ -1111,21 +1375,23 @@
 <div id="cartModal" class="modal">
     <div class="modal-box" style="max-width:550px;">
         <button class="close" onclick="closeCartModal()">×</button>
-        <span class="role-label">🛒 Shopping Cart</span>
-        <h2>Your Shopping Cart</h2>
-        <p>Review selected produce items and place order.</p>
+        <span class="role-label">🛒 <span data-i18n="label_shopping_cart">Shopping Cart</span></span>
+        <h2 data-i18n="cart_title">Your Shopping Cart</h2>
+        <p data-i18n="cart_sub">Review selected produce items and place order.</p>
 
         <div id="cartItemsList" style="max-height:260px; overflow-y:auto; margin:15px 0;">
             <!-- Loaded dynamically from GET /cart/{buyer_id} -->
         </div>
 
         <div style="display:flex; justify-content:space-between; align-items:center; margin:15px 0; border-top:1px solid var(--border); padding-top:10px;">
-            <strong>Total Cart Amount:</strong>
+            <strong data-i18n="label_total">Total Cart Amount:</strong>
             <strong id="cartTotalAmount" style="color:#86efac; font-size:22px;">₹0</strong>
         </div>
 
         <input id="deliveryAddressInput" class="input" placeholder="Enter Delivery Address (e.g. Kothapeta, AP)" value="Kothapeta, Andhra Pradesh">
-        <button class="primary-btn" onclick="checkoutCart()">Place Order & Start Delivery 🚚</button>
+        <button class="primary-btn" onclick="checkoutCart()" style="justify-content:center; width:100%; margin-top:10px;">
+            <span data-i18n="btn_place_order">Place Order & Start Delivery 🚚</span>
+        </button>
     </div>
 </div>
 
@@ -1142,11 +1408,269 @@
 </footer>
 
 <!-- =========================
-     JAVASCRIPT INTEGRATION
+     JAVASCRIPT
 ========================= -->
 <script>
-  const API_BASE_URL = "https://kisanconnect-x6xj.onrender.com";
+    // ─────────────────────────────────────────────────────────
+    //  CONFIG
+    // ─────────────────────────────────────────────────────────
+    const API_BASE_URL = "http://127.0.0.1:8000";
 
+    // ─────────────────────────────────────────────────────────
+    //  I18N — TRANSLATIONS
+    // ─────────────────────────────────────────────────────────
+    const TRANSLATIONS = {
+        en: {
+            nav_home: "Home",
+            nav_how: "How It Works",
+            nav_market: "Market",
+            nav_cart: "Cart",
+            nav_login: "Login",
+            hero_desc: "A smarter marketplace connecting farmers directly with buyers. Discover fresh products, fair prices, transparent transactions, intelligent AI demand insights and optimized delivery routes.",
+            btn_shop_now: "Shop Now",
+            btn_sell: "Sell Products",
+            btn_get_started: "Get Started",
+            btn_ai: "AI Assistant",
+            btn_market: "Market Prices",
+            roles_choose: "Choose your journey",
+            roles_who: "Who are you?",
+            role_farmer: "I'm a Farmer",
+            role_farmer_desc: "Manage products, monitor sales, view AI price suggestions, understand demand forecasts and optimize delivery routes.",
+            role_buyer: "I'm a Buyer",
+            role_buyer_desc: "Find fresh farm products, compare fair prices, add products to cart, place orders and track live delivery status.",
+            btn_farmer_dash: "Farmer Dashboard →",
+            btn_explore: "Explore Products →",
+            label_farmer_portal: "Farmer Portal",
+            farmer_dash_title: "Farmer Dashboard",
+            farmer_dash_sub: "Welcome back! Here is your real-time farm business overview.",
+            label_buyer_portal: "Buyer Portal",
+            buyer_dash_title: "Buyer Marketplace",
+            buyer_dash_sub: "Fresh agricultural produce directly from local farmers.",
+            btn_home: "Home",
+            stat_sales: "Total Sales",
+            stat_products: "Products Listed",
+            stat_orders: "Total Orders",
+            stat_buyers: "Buyers",
+            stat_cart: "Cart Items",
+            stat_spent: "Total Spent",
+            stat_deliveries: "Active Deliveries",
+            panel_ai_price: "AI Price Suggestion",
+            panel_realtime: "Real-Time Market",
+            panel_ai_demand: "AI Demand Forecasting",
+            panel_30day: "30-Day Trend",
+            panel_my_products: "My Listed Products",
+            btn_add_product: "+ Add Product",
+            panel_incoming_orders: "Incoming Buyer Orders",
+            label_live: "Live Orders",
+            panel_delivery: "AI Delivery Route Optimization",
+            label_dispatch: "Smart Dispatch",
+            panel_fresh_produce: "Fresh Produce From Farmers",
+            btn_view_cart: "View Cart 🛒",
+            panel_my_orders: "My Orders",
+            label_order_history: "Order History",
+            panel_delivery_tracking: "Live Delivery Tracking",
+            label_gps: "GPS Tracking",
+            login_title: "Welcome 👋",
+            login_sub: "Login with your mobile number. OTP will be sent via SMS.",
+            tab_buyer: "🛒 Buyer",
+            tab_farmer: "👨‍🌾 Farmer",
+            btn_send_otp: "Send OTP",
+            btn_verify_otp: "Verify OTP & Login",
+            label_farmer_inventory: "Farmer Inventory",
+            add_product_title: "Add New Product",
+            add_product_sub: "List your fresh harvest for buyers across the network.",
+            btn_submit_product: "Submit Product",
+            label_shopping_cart: "Shopping Cart",
+            cart_title: "Your Shopping Cart",
+            cart_sub: "Review selected produce items and place order.",
+            label_total: "Total Cart Amount:",
+            btn_place_order: "Place Order & Start Delivery 🚚",
+            btn_add_to_cart: "Add to Cart",
+            btn_buy: "Buy",
+            btn_search: "Search",
+            btn_contact: "Contact",
+            btn_logout: "Logout",
+        },
+        te: {
+            nav_home: "హోమ్",
+            nav_how: "ఎలా పని చేస్తుంది",
+            nav_market: "మార్కెట్",
+            nav_cart: "కార్ట్",
+            nav_login: "లాగిన్",
+            hero_desc: "రైతులను నేరుగా కొనుగోలుదారులతో అనుసంధానించే తెలివైన మార్కెట్‌ప్లేస్. తాజా ఉత్పత్తులు, న్యాయమైన ధరలు, పారదర్శక లావాదేవీలు.",
+            btn_shop_now: "ఇప్పుడు కొనండి",
+            btn_sell: "ఉత్పత్తులు అమ్మండి",
+            btn_get_started: "ప్రారంభించండి",
+            btn_ai: "AI సహాయకుడు",
+            btn_market: "మార్కెట్ ధరలు",
+            roles_choose: "మీ ప్రయాణాన్ని ఎంచుకోండి",
+            roles_who: "మీరు ఎవరు?",
+            role_farmer: "నేను రైతుని",
+            role_farmer_desc: "ఉత్పత్తులను నిర్వహించండి, AI ధర సూచనలు, డిమాండ్ అంచనాలు మరియు డెలివరీ మార్గాలను ఆప్టిమైజ్ చేయండి.",
+            role_buyer: "నేను కొనుగోలుదారుడిని",
+            role_buyer_desc: "తాజా వ్యవసాయ ఉత్పత్తులను కనుగొనండి, ధరలు పోల్చండి, కార్ట్‌కు జోడించండి మరియు లైవ్ డెలివరీని ట్రాక్ చేయండి.",
+            btn_farmer_dash: "రైతు డాష్‌బోర్డ్ →",
+            btn_explore: "ఉత్పత్తులను అన్వేషించండి →",
+            label_farmer_portal: "రైతు పోర్టల్",
+            farmer_dash_title: "రైతు డాష్‌బోర్డ్",
+            farmer_dash_sub: "స్వాగతం! మీ రియల్-టైమ్ వ్యవసాయ వ్యాపార అవలోకనం ఇక్కడ ఉంది.",
+            label_buyer_portal: "కొనుగోలుదారు పోర్టల్",
+            buyer_dash_title: "కొనుగోలుదారు మార్కెట్",
+            buyer_dash_sub: "స్థానిక రైతుల నుండి నేరుగా తాజా వ్యవసాయ ఉత్పత్తులు.",
+            btn_home: "హోమ్",
+            stat_sales: "మొత్తం విక్రయాలు",
+            stat_products: "జాబితా చేసిన ఉత్పత్తులు",
+            stat_orders: "మొత్తం ఆర్డర్లు",
+            stat_buyers: "కొనుగోలుదారులు",
+            stat_cart: "కార్ట్ వస్తువులు",
+            stat_spent: "మొత్తం ఖర్చు",
+            stat_deliveries: "యాక్టివ్ డెలివరీలు",
+            panel_ai_price: "AI ధర సూచన",
+            panel_realtime: "రియల్-టైమ్ మార్కెట్",
+            panel_ai_demand: "AI డిమాండ్ అంచనా",
+            panel_30day: "30-రోజుల ట్రెండ్",
+            panel_my_products: "నా జాబితా చేసిన ఉత్పత్తులు",
+            btn_add_product: "+ ఉత్పత్తి జోడించండి",
+            panel_incoming_orders: "వచ్చే కొనుగోలుదారు ఆర్డర్లు",
+            label_live: "లైవ్ ఆర్డర్లు",
+            panel_delivery: "AI డెలివరీ మార్గ ఆప్టిమైజేషన్",
+            label_dispatch: "స్మార్ట్ డిస్పాచ్",
+            panel_fresh_produce: "రైతుల నుండి తాజా ఉత్పత్తులు",
+            btn_view_cart: "కార్ట్ చూడండి 🛒",
+            panel_my_orders: "నా ఆర్డర్లు",
+            label_order_history: "ఆర్డర్ చరిత్ర",
+            panel_delivery_tracking: "లైవ్ డెలివరీ ట్రాకింగ్",
+            label_gps: "GPS ట్రాకింగ్",
+            login_title: "స్వాగతం 👋",
+            login_sub: "మీ మొబైల్ నంబర్‌తో లాగిన్ చేయండి. OTP SMS ద్వారా పంపబడుతుంది.",
+            tab_buyer: "🛒 కొనుగోలుదారు",
+            tab_farmer: "👨‍🌾 రైతు",
+            btn_send_otp: "OTP పంపండి",
+            btn_verify_otp: "OTP ధృవీకరించి లాగిన్",
+            label_farmer_inventory: "రైతు ఇన్వెంటరీ",
+            add_product_title: "కొత్త ఉత్పత్తి జోడించండి",
+            add_product_sub: "నెట్‌వర్క్‌లో కొనుగోలుదారులకు మీ తాజా పంటను జాబితా చేయండి.",
+            btn_submit_product: "ఉత్పత్తి సమర్పించండి",
+            label_shopping_cart: "షాపింగ్ కార్ట్",
+            cart_title: "మీ షాపింగ్ కార్ట్",
+            cart_sub: "ఎంచుకున్న ఉత్పత్తి వస్తువులను సమీక్షించి ఆర్డర్ చేయండి.",
+            label_total: "మొత్తం కార్ట్ మొత్తం:",
+            btn_place_order: "ఆర్డర్ చేయండి & డెలివరీ ప్రారంభించండి 🚚",
+            btn_add_to_cart: "కార్ట్‌కు జోడించండి",
+            btn_buy: "కొనండి",
+            btn_search: "వెతకండి",
+            btn_contact: "సంప్రదించండి",
+            btn_logout: "లాగ్అవుట్",
+        },
+        hi: {
+            nav_home: "होम",
+            nav_how: "यह कैसे काम करता है",
+            nav_market: "बाज़ार",
+            nav_cart: "कार्ट",
+            nav_login: "लॉगिन",
+            hero_desc: "किसानों को सीधे खरीदारों से जोड़ने वाला एक स्मार्ट मार्केटप्लेस। ताज़े उत्पाद, उचित मूल्य, पारदर्शी लेन-देन।",
+            btn_shop_now: "अभी खरीदें",
+            btn_sell: "उत्पाद बेचें",
+            btn_get_started: "शुरू करें",
+            btn_ai: "AI सहायक",
+            btn_market: "बाज़ार भाव",
+            roles_choose: "अपनी यात्रा चुनें",
+            roles_who: "आप कौन हैं?",
+            role_farmer: "मैं किसान हूँ",
+            role_farmer_desc: "उत्पाद प्रबंधित करें, AI मूल्य सुझाव, माँग अनुमान और डिलीवरी मार्ग अनुकूलन देखें।",
+            role_buyer: "मैं खरीदार हूँ",
+            role_buyer_desc: "ताज़े कृषि उत्पाद खोजें, उचित दाम पाएं, कार्ट में जोड़ें और लाइव डिलीवरी ट्रैक करें।",
+            btn_farmer_dash: "किसान डैशबोर्ड →",
+            btn_explore: "उत्पाद देखें →",
+            label_farmer_portal: "किसान पोर्टल",
+            farmer_dash_title: "किसान डैशबोर्ड",
+            farmer_dash_sub: "वापसी पर स्वागत! यहाँ आपका रियल-टाइम फ़ार्म बिज़नेस अवलोकन है।",
+            label_buyer_portal: "खरीदार पोर्टल",
+            buyer_dash_title: "खरीदार बाज़ार",
+            buyer_dash_sub: "स्थानीय किसानों से सीधे ताज़ा कृषि उत्पाद।",
+            btn_home: "होम",
+            stat_sales: "कुल बिक्री",
+            stat_products: "सूचीबद्ध उत्पाद",
+            stat_orders: "कुल ऑर्डर",
+            stat_buyers: "खरीदार",
+            stat_cart: "कार्ट आइटम",
+            stat_spent: "कुल खर्च",
+            stat_deliveries: "सक्रिय डिलीवरी",
+            panel_ai_price: "AI मूल्य सुझाव",
+            panel_realtime: "रियल-टाइम बाज़ार",
+            panel_ai_demand: "AI माँग पूर्वानुमान",
+            panel_30day: "30-दिन का रुझान",
+            panel_my_products: "मेरे सूचीबद्ध उत्पाद",
+            btn_add_product: "+ उत्पाद जोड़ें",
+            panel_incoming_orders: "आने वाले खरीदार ऑर्डर",
+            label_live: "लाइव ऑर्डर",
+            panel_delivery: "AI डिलीवरी मार्ग अनुकूलन",
+            label_dispatch: "स्मार्ट डिस्पैच",
+            panel_fresh_produce: "किसानों से ताज़ा उपज",
+            btn_view_cart: "कार्ट देखें 🛒",
+            panel_my_orders: "मेरे ऑर्डर",
+            label_order_history: "ऑर्डर इतिहास",
+            panel_delivery_tracking: "लाइव डिलीवरी ट्रैकिंग",
+            label_gps: "GPS ट्रैकिंग",
+            login_title: "स्वागत है 👋",
+            login_sub: "अपने मोबाइल नंबर से लॉगिन करें। OTP SMS के ज़रिए भेजा जाएगा।",
+            tab_buyer: "🛒 खरीदार",
+            tab_farmer: "👨‍🌾 किसान",
+            btn_send_otp: "OTP भेजें",
+            btn_verify_otp: "OTP सत्यापित करें और लॉगिन करें",
+            label_farmer_inventory: "किसान इन्वेंटरी",
+            add_product_title: "नया उत्पाद जोड़ें",
+            add_product_sub: "नेटवर्क पर खरीदारों के लिए अपनी ताज़ी फसल सूचीबद्ध करें।",
+            btn_submit_product: "उत्पाद सबमिट करें",
+            label_shopping_cart: "शॉपिंग कार्ट",
+            cart_title: "आपका शॉपिंग कार्ट",
+            cart_sub: "चुने गए उत्पाद आइटम की समीक्षा करें और ऑर्डर दें।",
+            label_total: "कुल कार्ट राशि:",
+            btn_place_order: "ऑर्डर दें और डिलीवरी शुरू करें 🚚",
+            btn_add_to_cart: "कार्ट में जोड़ें",
+            btn_buy: "खरीदें",
+            btn_search: "खोजें",
+            btn_contact: "संपर्क करें",
+            btn_logout: "लॉगआउट",
+        }
+    };
+
+    let currentLang = localStorage.getItem("kisan_lang") || "en";
+
+    function setLanguage(lang) {
+        if (!TRANSLATIONS[lang]) return;
+        currentLang = lang;
+        localStorage.setItem("kisan_lang", lang);
+
+        // Update html lang attr
+        document.documentElement.lang = lang;
+
+        // Translate all [data-i18n] elements
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            if (TRANSLATIONS[lang][key]) {
+                el.textContent = TRANSLATIONS[lang][key];
+            }
+        });
+
+        // Update lang selector
+        const sel = document.getElementById("langSelect");
+        if (sel) sel.value = lang;
+
+        // Re-render add-to-cart buttons (dynamic content)
+        document.querySelectorAll(".add-cart").forEach(btn => {
+            btn.innerHTML = `<i class="fa-solid fa-cart-plus"></i> ${TRANSLATIONS[lang].btn_add_to_cart || "Add to Cart"}`;
+        });
+    }
+
+    // t() helper for inline JS strings
+    function t(key, fallback) {
+        return (TRANSLATIONS[currentLang] || {})[key] || fallback || key;
+    }
+
+    // ─────────────────────────────────────────────────────────
+    //  USER STATE
+    // ─────────────────────────────────────────────────────────
     let currentUser = null;
     try {
         currentUser = JSON.parse(localStorage.getItem("farmer_direct_user")) || null;
@@ -1156,20 +1680,88 @@
 
     let selectedRole = currentUser ? currentUser.role : "buyer";
 
+    // ─────────────────────────────────────────────────────────
+    //  OTP FLOW STATE
+    // ─────────────────────────────────────────────────────────
+    let resendTimer = null;
+    let resendCountdownVal = 60;
+    let otpAttemptsUsed = 0;
+    const OTP_MAX_ATTEMPTS = 3;
+
+    // ─────────────────────────────────────────────────────────
+    //  AUTHENTICATION GUARD & TOKEN HELPERS
+    // ─────────────────────────────────────────────────────────
+    function getAuthToken() {
+        return localStorage.getItem("farmer_direct_token");
+    }
+
+    function requireAuth(requiredRole = null) {
+        const token = getAuthToken();
+        if (!currentUser || !token) {
+            notify("🔒 Authentication required. Please enter your mobile number & verify OTP to log in.");
+            if (requiredRole) {
+                selectedRole = requiredRole;
+                syncRoleTabs();
+            }
+            hideDashboards();
+            openLogin();
+            return false;
+        }
+
+        if (requiredRole && currentUser.role !== requiredRole) {
+            notify(`🔒 Access restricted. You are logged in as '${currentUser.role.toUpperCase()}'. Please log in as a ${requiredRole.toUpperCase()} to access this dashboard.`);
+            selectedRole = requiredRole;
+            syncRoleTabs();
+            hideDashboards();
+            openLogin();
+            return false;
+        }
+
+        return true;
+    }
+
+    // ─────────────────────────────────────────────────────────
+    //  INIT
+    // ─────────────────────────────────────────────────────────
     document.addEventListener("DOMContentLoaded", () => {
+        setLanguage(currentLang);
+
+        // Restore session ONLY if valid user and JWT token exist
+        const savedUser = localStorage.getItem("farmer_direct_user");
+        const savedToken = localStorage.getItem("farmer_direct_token");
+        if (savedUser && savedToken) {
+            try {
+                currentUser = JSON.parse(savedUser);
+            } catch (e) {
+                currentUser = null;
+                localStorage.removeItem("farmer_direct_user");
+                localStorage.removeItem("farmer_direct_token");
+            }
+        } else {
+            currentUser = null;
+        }
+
         updateUserNavUI();
-        if (currentUser) {
+
+        if (currentUser && savedToken) {
             showDashboard(currentUser.role, false);
+        } else {
+            hideDashboards();
         }
     });
 
+    // ─────────────────────────────────────────────────────────
+    //  NAV / USER UI
+    // ─────────────────────────────────────────────────────────
     function updateUserNavUI() {
         const btn = document.getElementById("navLoginBtn");
-        if (currentUser) {
-            btn.innerHTML = `<i class="fa-solid fa-user-check"></i> ${currentUser.name} (${currentUser.role.toUpperCase()}) | Logout`;
+        if (currentUser && getAuthToken()) {
+            const logoutLabel = t("btn_logout", "Logout");
+            btn.innerHTML = `<i class="fa-solid fa-user-check"></i> ${currentUser.name} (${currentUser.role.toUpperCase()}) | ${logoutLabel}`;
             btn.onclick = logout;
         } else {
-            btn.innerHTML = `<i class="fa-solid fa-user"></i> Login`;
+            const loginLabel = t("nav_login", "Login");
+            btn.innerHTML = `<i class="fa-solid fa-user"></i> <span data-i18n="nav_login">${loginLabel}</span>`;
             btn.onclick = openLogin;
         }
         updateCartBadge();
@@ -1184,27 +1776,221 @@
         notify("Logged out successfully");
     }
 
-    function chooseRole(role) {
-        selectedRole = role;
-        const roleLabel = document.getElementById("modalRoleLabel");
-        if (roleLabel) roleLabel.textContent = (role === "farmer" ? "👨‍🌾 Farmer Access" : "🛒 Buyer Access");
-        openLogin();
+    // ─────────────────────────────────────────────────────────
+    //  HERO BUTTON ACTIONS
+    // ─────────────────────────────────────────────────────────
+
+    /** Shop Now / Explore Products → Buyer dashboard (login required) */
+    function goToBuyerDashboard() {
+        if (!requireAuth("buyer")) return;
+        showDashboard("buyer");
     }
 
+    /** Sell Products → Farmer dashboard (login required) */
+    function goToFarmerDashboard() {
+        if (!requireAuth("farmer")) return;
+        showDashboard("farmer");
+    }
+
+    /** Scroll to AI market prices section (Farmer login required) */
+    function scrollToAI() {
+        if (!requireAuth("farmer")) return;
+        showDashboard("farmer", false);
+        const el = document.getElementById("market");
+        if (el) {
+            setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 150);
+        }
+    }
+
+    /** Scroll to market prices section */
+    function scrollToMarket() {
+        scrollToAI(); // same section
+    }
+
+    /** Legacy chooseRole for role cards */
+    function chooseRole(role) {
+        if (role === "farmer") goToFarmerDashboard();
+        else goToBuyerDashboard();
+    }
+
+    // ─────────────────────────────────────────────────────────
+    //  LOGIN MODAL
+    // ─────────────────────────────────────────────────────────
     function openLogin() {
+        resetLoginFlow();
         document.getElementById("loginModal").classList.add("show");
     }
 
     function closeLogin() {
         document.getElementById("loginModal").classList.remove("show");
+        stopResendTimer();
     }
 
+    function resetLoginFlow() {
+        document.getElementById("mobileBox").style.display = "block";
+        document.getElementById("otpBox").style.display = "none";
+        document.getElementById("mobile").value = "";
+        document.getElementById("nameInput").value = "";
+        document.getElementById("otp").value = "";
+        document.getElementById("debugBanner").classList.remove("show");
+        document.getElementById("debugBanner2").classList.remove("show");
+        document.getElementById("otpInfo").textContent = "";
+        otpAttemptsUsed = 0;
+        updateAttemptDots();
+        stopResendTimer();
+    }
+
+    function selectLoginRole(role) {
+        selectedRole = role;
+        syncRoleTabs();
+        const label = document.getElementById("modalRoleLabel");
+        if (label) label.textContent = (role === "farmer" ? "👨‍🌾 Farmer Access" : "🛒 Buyer Access");
+    }
+
+    function syncRoleTabs() {
+        document.getElementById("tabBuyer").classList.toggle("active", selectedRole === "buyer");
+        document.getElementById("tabFarmer").classList.toggle("active", selectedRole === "farmer");
+    }
+
+    // ─────────────────────────────────────────────────────────
+    //  SEND OTP
+    // ─────────────────────────────────────────────────────────
     async function sendOTP() {
         const mobile = document.getElementById("mobile").value.trim();
         if (!/^\d{10}$/.test(mobile)) {
             notify("Please enter a valid 10-digit mobile number");
             return;
         }
+
+        const btn = document.getElementById("sendOtpBtn");
+        btn.disabled = true;
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending...`;
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/send-otp`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ mobile })
+            });
+            const data = await res.json();
+
+            if (res.ok) {
+                // Show OTP step
+                document.getElementById("mobileBox").style.display = "none";
+                document.getElementById("otpBox").style.display = "block";
+                document.getElementById("otpSentNotice").textContent =
+                    `✅ OTP sent to +91-XXXXXX${mobile.slice(-4)}. Valid for 5 minutes.`;
+
+                // Reset attempt state
+                otpAttemptsUsed = 0;
+                updateAttemptDots();
+
+                // Show debug OTP if provided (dev mode only)
+                if (data.debug_otp) {
+                    const banner = document.getElementById("debugBanner2");
+                    banner.textContent = `🛠️ Dev Mode — OTP: ${data.debug_otp}`;
+                    banner.classList.add("show");
+                }
+
+                // Start resend cooldown timer
+                const cooldown = data.cooldown_seconds || 60;
+                startResendTimer(cooldown);
+
+                notify(`OTP sent to +91-XXXXXX${mobile.slice(-4)}`);
+            } else {
+                // Could be resend cooldown
+                const detail = data.detail || "Failed to send OTP";
+                notify(detail);
+                if (res.status === 429) {
+                    // Show the OTP box if we already had one
+                    const match = detail.match(/(\d+) seconds/);
+                    if (match) startResendTimer(parseInt(match[1]));
+                }
+            }
+        } catch (err) {
+            notify(`Cannot connect to server at ${API_BASE_URL}. Is the backend running?`);
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span data-i18n="btn_send_otp">Send OTP</span>`;
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────
+    //  VERIFY OTP
+    // ─────────────────────────────────────────────────────────
+    async function verifyOTP() {
+        const mobile = document.getElementById("mobile").value.trim();
+        const otp = document.getElementById("otp").value.trim();
+        const userName = document.getElementById("nameInput")?.value.trim() ||
+            (selectedRole === "farmer" ? "Farmer User" : "Buyer User");
+
+        if (!otp || !/^\d{6}$/.test(otp)) {
+            setOtpInfo("Please enter the 6-digit OTP.", "warn");
+            return;
+        }
+
+        const btn = document.getElementById("verifyOtpBtn");
+        btn.disabled = true;
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying...`;
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/verify-otp`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    mobile,
+                    otp,
+                    name: userName,
+                    role: selectedRole
+                })
+            });
+            const data = await res.json();
+
+            if (res.ok) {
+                // Success
+                currentUser = data.user;
+                localStorage.setItem("farmer_direct_user", JSON.stringify(currentUser));
+                if (data.token) localStorage.setItem("farmer_direct_token", data.token);
+
+                stopResendTimer();
+                updateUserNavUI();
+                closeLogin();
+                notify(`✅ ${data.message}`);
+                showDashboard(currentUser.role);
+            } else {
+                // Failure
+                otpAttemptsUsed++;
+                updateAttemptDots();
+                const detail = data.detail || "Invalid OTP";
+                setOtpInfo(detail, "err");
+                notify(detail);
+
+                // If max attempts exceeded, reset to mobile step
+                if (res.status === 429) {
+                    setTimeout(() => {
+                        notify("Please request a new OTP.");
+                        resetLoginFlow();
+                        document.getElementById("loginModal").classList.add("show");
+                    }, 1500);
+                }
+            }
+        } catch (err) {
+            notify(`Error connecting to backend at ${API_BASE_URL}`);
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = `<i class="fa-solid fa-shield-halved"></i> <span data-i18n="btn_verify_otp">Verify OTP & Login</span>`;
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────
+    //  RESEND OTP
+    // ─────────────────────────────────────────────────────────
+    async function resendOTP() {
+        const mobile = document.getElementById("mobile").value.trim();
+        if (!mobile) { notify("Mobile number missing."); return; }
+
+        const resendBtn = document.getElementById("resendBtn");
+        resendBtn.disabled = true;
 
         try {
             const res = await fetch(`${API_BASE_URL}/auth/send-otp`, {
@@ -1214,86 +2000,110 @@
             });
             const data = await res.json();
             if (res.ok) {
-                document.getElementById("mobileBox").style.display = "none";
-                document.getElementById("otpBox").style.display = "block";
-                notify(`Demo OTP sent: ${data.otp}`);
+                otpAttemptsUsed = 0;
+                updateAttemptDots();
+                setOtpInfo("New OTP sent!", "");
+                document.getElementById("otp").value = "";
+                if (data.debug_otp) {
+                    const banner = document.getElementById("debugBanner2");
+                    banner.textContent = `🛠️ Dev Mode — OTP: ${data.debug_otp}`;
+                    banner.classList.add("show");
+                }
+                startResendTimer(data.cooldown_seconds || 60);
+                notify("New OTP sent successfully!");
             } else {
-                notify(data.detail || "Failed to send OTP");
+                const match = (data.detail || "").match(/(\d+) seconds/);
+                if (match) startResendTimer(parseInt(match[1]));
+                notify(data.detail || "Could not resend OTP");
             }
         } catch (err) {
-            document.getElementById("mobileBox").style.display = "none";
-            document.getElementById("otpBox").style.display = "block";
-            notify("Demo OTP sent: 123456");
+            notify("Error resending OTP");
         }
     }
 
-    async function verifyOTP() {
-        const mobile = document.getElementById("mobile").value.trim();
-        const otp = document.getElementById("otp").value.trim();
-        const userName = document.getElementById("nameInput")?.value.trim() || (selectedRole === "farmer" ? "Farmer Ramesh" : "Buyer Priya");
+    function startResendTimer(seconds) {
+        stopResendTimer();
+        resendCountdownVal = seconds;
+        const btn = document.getElementById("resendBtn");
+        const countdownEl = document.getElementById("resendCountdown");
+        btn.disabled = true;
 
-        if (!otp) {
-            notify("Please enter OTP (Demo OTP: 123456)");
+        resendTimer = setInterval(() => {
+            resendCountdownVal--;
+            if (countdownEl) countdownEl.textContent = resendCountdownVal;
+            if (resendCountdownVal <= 0) {
+                stopResendTimer();
+                if (btn) {
+                    btn.disabled = false;
+                    const span = document.getElementById("resendBtnText");
+                    if (span) span.textContent = "Resend OTP";
+                }
+            } else {
+                const span = document.getElementById("resendBtnText");
+                if (span) span.innerHTML = `Resend OTP in <span id="resendCountdown">${resendCountdownVal}</span>s`;
+            }
+        }, 1000);
+    }
+
+    function stopResendTimer() {
+        if (resendTimer) { clearInterval(resendTimer); resendTimer = null; }
+    }
+
+    function updateAttemptDots() {
+        for (let i = 1; i <= 3; i++) {
+            const dot = document.getElementById(`dot${i}`);
+            if (dot) dot.classList.toggle("used", i <= otpAttemptsUsed);
+        }
+    }
+
+    function setOtpInfo(msg, type) {
+        const el = document.getElementById("otpInfo");
+        if (!el) return;
+        el.textContent = msg;
+        el.className = "otp-info" + (type ? " " + type : "");
+    }
+
+    // ─────────────────────────────────────────────────────────
+    //  DASHBOARD NAVIGATION
+    // ─────────────────────────────────────────────────────────
+    function showDashboard(role, scroll = true) {
+        // STRICT SECURITY GUARD: Authentication check
+        if (!requireAuth(role)) {
             return;
         }
 
-        try {
-            const res = await fetch(`${API_BASE_URL}/auth/verify-otp`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    mobile: mobile || "9876543210",
-                    otp: otp,
-                    name: userName,
-                    role: selectedRole
-                })
-            });
-            const data = await res.json();
-
-            if (res.ok) {
-                currentUser = data.user;
-                localStorage.setItem("farmer_direct_user", JSON.stringify(currentUser));
-                if (data.token) localStorage.setItem("farmer_direct_token", data.token);
-
-                updateUserNavUI();
-                closeLogin();
-                notify(`Welcome ${currentUser.name}! Logged in as ${currentUser.role}.`);
-                showDashboard(currentUser.role);
-            } else {
-                notify(data.detail || "Invalid OTP");
-            }
-        } catch (err) {
-            notify("Error connecting to backend API at " + API_BASE_URL);
-        }
-    }
-
-    function showDashboard(role, scroll = true) {
         document.getElementById("farmerDashboard").classList.remove("active");
         document.getElementById("buyerDashboard").classList.remove("active");
 
         if (role === "farmer") {
             document.getElementById("farmerDashboard").classList.add("active");
             loadFarmerAll();
-        } else {
+        } else if (role === "buyer") {
             document.getElementById("buyerDashboard").classList.add("active");
             loadBuyerAll();
         }
 
         if (scroll) {
-            document.querySelector(".app-section").scrollIntoView({ behavior: "smooth" });
+            const section = document.querySelector(".app-section");
+            if (section) section.scrollIntoView({ behavior: "smooth" });
         }
     }
 
     function hideDashboards() {
         document.getElementById("farmerDashboard").classList.remove("active");
         document.getElementById("buyerDashboard").classList.remove("active");
-        document.getElementById("roles").scrollIntoView({ behavior: "smooth" });
     }
 
-    // --- FARMER APIS ---
-
+    // ─────────────────────────────────────────────────────────
+    //  FARMER APIS
+    // ─────────────────────────────────────────────────────────
     function loadFarmerAll() {
-        const farmerId = currentUser && currentUser.role === "farmer" ? currentUser.id : 1;
+        if (!currentUser || currentUser.role !== "farmer" || !getAuthToken()) {
+            console.warn("loadFarmerAll blocked: Unauthenticated attempt.");
+            hideDashboards();
+            return;
+        }
+        const farmerId = currentUser.id;
         loadFarmerProducts(farmerId);
         loadFarmerOrders(farmerId);
         loadFarmerDeliveries(farmerId);
@@ -1319,7 +2129,7 @@
             container.innerHTML = products.map(p => `
                 <div class="product">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=600&q=80" alt="${p.name}">
+                        <img src="${getProductImage(p.name, p.category)}" alt="Fresh ${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=75'">
                     </div>
                     <div class="product-body">
                         <h4>${p.name}</h4>
@@ -1335,7 +2145,9 @@
     function openAddProductModal() {
         if (!currentUser || currentUser.role !== "farmer") {
             notify("Please log in as a Farmer to add products.");
-            chooseRole("farmer");
+            selectedRole = "farmer";
+            syncRoleTabs();
+            openLogin();
             return;
         }
         document.getElementById("addProductModal").classList.add("show");
@@ -1475,7 +2287,7 @@
                         <span style="color:#86efac;">● Status: <strong>${d.status}</strong></span>
                         <span>Distance: <strong>${d.distance_km} km</strong> | ETA: <strong>${d.estimated_minutes} min</strong></span>
                     </div>
-                    <button class="primary-btn" style="margin-top:12px; width:100%;" onclick="runAIRouteOptimization(${d.delivery_id})">
+                    <button class="primary-btn" style="margin-top:12px; width:100%; justify-content:center;" onclick="runAIRouteOptimization(${d.delivery_id})">
                         🤖 AI Route Optimization
                     </button>
                 </div>
@@ -1560,8 +2372,9 @@
         } catch (err) { console.error(err); }
     }
 
-    // --- BUYER APIS ---
-
+    // ─────────────────────────────────────────────────────────
+    //  BUYER APIS
+    // ─────────────────────────────────────────────────────────
     function loadBuyerAll() {
         const buyerId = currentUser && currentUser.role === "buyer" ? currentUser.id : 2;
         loadBuyerProducts();
@@ -1583,10 +2396,11 @@
                 return;
             }
 
+            const addToCartLabel = t("btn_add_to_cart", "Add to Cart");
             container.innerHTML = products.map(p => `
                 <div class="product">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=600&q=80" alt="${p.name}">
+                        <img src="${getProductImage(p.name, p.category)}" alt="Fresh ${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=75'">
                     </div>
                     <div class="product-body">
                         <h4>${p.name}</h4>
@@ -1594,7 +2408,7 @@
                         <p style="color:#9db0a4; font-size:12px;">Stock: ${p.quantity} ${p.unit}</p>
                         <div class="price">₹${p.price}/${p.unit}</div>
                         <button class="add-cart" onclick="addToCart(${p.id})">
-                            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                            <i class="fa-solid fa-cart-plus"></i> ${addToCartLabel}
                         </button>
                     </div>
                 </div>
@@ -1605,7 +2419,9 @@
     async function addToCart(productId, quantity = 1) {
         if (!currentUser) {
             notify("Please login as Buyer to add items to cart.");
-            chooseRole("buyer");
+            selectedRole = "buyer";
+            syncRoleTabs();
+            openLogin();
             return;
         }
 
@@ -1654,7 +2470,9 @@
     function openCartModal() {
         if (!currentUser || currentUser.role !== "buyer") {
             notify("Please log in as Buyer to view cart.");
-            chooseRole("buyer");
+            selectedRole = "buyer";
+            syncRoleTabs();
+            openLogin();
             return;
         }
         document.getElementById("cartModal").classList.add("show");
@@ -1802,7 +2620,8 @@
             const container = document.getElementById("buyerDeliveryCard");
             if (!container) return;
 
-            document.getElementById("buyerDeliveriesStat").textContent = deliveries.filter(d => d.status !== "DELIVERED" && d.status !== "CANCELLED").length;
+            document.getElementById("buyerDeliveriesStat").textContent =
+                deliveries.filter(d => d.status !== "DELIVERED" && d.status !== "CANCELLED").length;
 
             if (deliveries.length === 0) {
                 container.innerHTML = `<p style="color:#9db0a4;">No active deliveries at the moment.</p>`;
@@ -1823,13 +2642,96 @@
         } catch (err) { console.error(err); }
     }
 
+    // ─────────────────────────────────────────────────────────
+    //  PRODUCT IMAGE MAPPING — category/name based
+    // ─────────────────────────────────────────────────────────
+    const PRODUCT_IMAGES = {
+        // Vegetables
+        "tomato":     "https://images.unsplash.com/photo-1546470427-0d4e60e7d473?auto=format&fit=crop&w=600&q=80",
+        "tomatoes":   "https://images.unsplash.com/photo-1546470427-0d4e60e7d473?auto=format&fit=crop&w=600&q=80",
+        "onion":      "https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=600&q=80",
+        "onions":     "https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=600&q=80",
+        "potato":     "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80",
+        "potatoes":   "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80",
+        "carrot":     "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=600&q=80",
+        "carrots":    "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=600&q=80",
+        "chilli":     "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?auto=format&fit=crop&w=600&q=80",
+        "chili":      "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?auto=format&fit=crop&w=600&q=80",
+        "green chilli": "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?auto=format&fit=crop&w=600&q=80",
+        "brinjal":    "https://images.unsplash.com/photo-1615484477778-ca3b77940c25?auto=format&fit=crop&w=600&q=80",
+        "eggplant":   "https://images.unsplash.com/photo-1615484477778-ca3b77940c25?auto=format&fit=crop&w=600&q=80",
+        "cabbage":    "https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?auto=format&fit=crop&w=600&q=80",
+        "cauliflower":"https://images.unsplash.com/photo-1568584711271-6d4e4b8c0bb6?auto=format&fit=crop&w=600&q=80",
+        "spinach":    "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=600&q=80",
+        "palak":      "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=600&q=80",
+        // Fruits
+        "mango":      "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=600&q=80",
+        "mangoes":    "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=600&q=80",
+        "alphonso mango": "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=600&q=80",
+        "banana":     "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80",
+        "bananas":    "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80",
+        "apple":      "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80",
+        "apples":     "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80",
+        "orange":     "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?auto=format&fit=crop&w=600&q=80",
+        "oranges":    "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?auto=format&fit=crop&w=600&q=80",
+        "papaya":     "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=600&q=80",
+        "watermelon": "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=600&q=80",
+        "grapes":     "https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=600&q=80",
+        // Grains
+        "rice":       "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
+        "paddy":      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
+        "wheat":      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=600&q=80",
+        "maize":      "https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=600&q=80",
+        "corn":       "https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=600&q=80",
+        // Pulses
+        "dal":        "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
+        "lentil":     "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
+        "pulses":     "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
+        // Spices
+        "turmeric":   "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=600&q=80",
+        "pepper":     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80",
+        "ginger":     "https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?auto=format&fit=crop&w=600&q=80",
+        "garlic":     "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80",
+    };
+
+    const CATEGORY_IMAGES = {
+        "vegetables": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
+        "fruits":     "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=600&q=80",
+        "grains":     "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=600&q=80",
+        "pulses":     "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
+        "spices":     "https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&w=600&q=80",
+        "commercial": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80",
+    };
+
+    const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=75";
+
+    function getProductImage(productName, category) {
+        const nameLower = (productName || "").toLowerCase().trim();
+        const catLower  = (category || "").toLowerCase().trim();
+        // Try exact product name match first
+        if (PRODUCT_IMAGES[nameLower]) return PRODUCT_IMAGES[nameLower];
+        // Try partial word match (e.g. "Fresh Tomato" → "tomato")
+        for (const key of Object.keys(PRODUCT_IMAGES)) {
+            if (nameLower.includes(key)) return PRODUCT_IMAGES[key];
+        }
+        // Fall back to category image
+        if (CATEGORY_IMAGES[catLower]) return CATEGORY_IMAGES[catLower];
+        return FALLBACK_IMAGE;
+    }
+
+    // ─────────────────────────────────────────────────────────
+    //  TOAST NOTIFICATION
+    // ─────────────────────────────────────────────────────────
     function notify(message) {
         const toast = document.getElementById("toast");
         toast.textContent = message;
         toast.classList.add("show");
-        setTimeout(() => { toast.classList.remove("show"); }, 3000);
+        setTimeout(() => { toast.classList.remove("show"); }, 3500);
     }
 
+    // ─────────────────────────────────────────────────────────
+    //  MODAL BACKDROP CLOSE
+    // ─────────────────────────────────────────────────────────
     window.addEventListener("click", function(event) {
         const modal = document.getElementById("loginModal");
         if (event.target === modal) closeLogin();
@@ -1837,6 +2739,19 @@
         if (event.target === addModal) closeAddProductModal();
         const cartModal = document.getElementById("cartModal");
         if (event.target === cartModal) closeCartModal();
+    });
+
+    // Allow Enter key to trigger OTP send/verify
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+            const mobileBox = document.getElementById("mobileBox");
+            const otpBox = document.getElementById("otpBox");
+            const modal = document.getElementById("loginModal");
+            if (modal.classList.contains("show")) {
+                if (mobileBox.style.display !== "none") sendOTP();
+                else if (otpBox.style.display !== "none") verifyOTP();
+            }
+        }
     });
 </script>
 </body>

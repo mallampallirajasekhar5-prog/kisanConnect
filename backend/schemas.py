@@ -54,13 +54,14 @@ class SendOTPRequest(BaseModel):
 
 class SendOTPResponse(BaseModel):
     message: str
-    otp: str
+    debug_otp: Optional[str] = None   # Only populated in development mode; None in production
+    cooldown_seconds: int = 60
 
 
 class VerifyOTPRequest(BaseModel):
     mobile: str
     otp: str
-    name: Optional[str] = "Test User"
+    name: Optional[str] = None
     role: RoleEnum = RoleEnum.BUYER
 
     @field_validator("mobile")
